@@ -655,11 +655,11 @@ class StateAction(State):
             tr = obj.animation_data.nla_tracks.new()  # NLA track
             action = actionobj.action  # bpy action
             if action:
-                currentFrame = bpy.context.scene.frame_current - 3
+                currentFrame = bpy.context.scene.frame_current
                 strip = tr.strips.new("", currentFrame, action)
                 strip.extrapolation = 'NOTHING'
                 strip.use_auto_blend = True
-            self.length = actionobj.length + 3
+            self.length = actionobj.length - 3
 
             """tr = obj.animation_data.nla_tracks.new()  # NLA track
             action = actionobj.motion
@@ -671,7 +671,6 @@ class StateAction(State):
 
     def evaluateState(self):
         self.currentFrame += 1
-        self.currentFrame = self.currentFrame
 
         """Check to see if the current state is still playing an animation"""
         # print("currentFrame", self.currentFrame, "length", self.length)
